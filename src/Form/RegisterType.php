@@ -27,7 +27,7 @@ class RegisterType extends AbstractType
                     'min' => 2,
                     'max' => 30
                 ])
-            ])
+            ]) 
             ->add('lastname', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [

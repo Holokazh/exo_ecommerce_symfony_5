@@ -24,6 +24,11 @@ class RegisterController extends AbstractController
      */
     public function index(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
+
+        if ($this->getUser()) {
+            return $this->redirectToRoute('account');
+        }
+
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
 
@@ -38,7 +43,6 @@ class RegisterController extends AbstractController
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
-            
         }
 
         return $this->render('register/index.html.twig', [

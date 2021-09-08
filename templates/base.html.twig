@@ -10,10 +10,17 @@
 			{% block title %}
 				Klevor - 100% Made in France
 			{% endblock %}
+			- Klevor
 		</title>
+
+		<!-- Fontawesome -->
+		<link
+		rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 		<!-- Bootstrap core CSS -->
 		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+		<link href="{{ asset('assets/css/klevor.css') }}" rel="stylesheet">
 
 		<style>
 			.bd-placeholder-img {
@@ -44,26 +51,28 @@
 				<div class="collapse navbar-collapse" id="navbarCollapse">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('home') }}">Home
-							</a>
+							<a class="nav-link" href="#">Nos produits</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('register') }}">Inscription
-							</a>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Qui sommes-nous ?</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_login') }}">Connexion
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_logout') }}">Deconnexion
-							</a>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Contact</a>
 						</li>
 					</ul>
-					<form class="form-inline mt-2 mt-md-0">
-						<input class="form-control mr-sm-2" type="text" placeholder="Votre recherche" aria-label="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-					</form>
+					<div class="navbar-item-custom">
+						{% if app.user %}
+							<a href="{{ path('account') }}">Mon compte
+								<small>({{ app.user.firstname }})</small>
+							</a>
+							|
+							<a href="{{ path('app_logout') }}">Deconnexion</a>
+						{% else %}
+							<a href="{{ path('register') }}">Inscription</a>
+							|
+							<a href="{{ path('app_login') }}">Connexion</a>
+						{% endif %}
+					</div>
 				</div>
 			</nav>
 		</header>
@@ -87,7 +96,7 @@
 								<div class="carousel-caption text-left">
 									<h1>Example headline.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																												                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
 									</p>
@@ -102,7 +111,7 @@
 								<div class="carousel-caption">
 									<h1>Another example headline.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																												                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
 									</p>
@@ -117,7 +126,7 @@
 								<div class="carousel-caption text-right">
 									<h1>One more for good measure.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																												                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a>
 									</p>
@@ -140,27 +149,34 @@
 
 
 			<!-- Marketing messaging and featurettes
-									        ================================================== -->
+																																							        ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
-			<div class="container marketing {% if block('carousel') is not defined %} mt-5 {% endif %}"> {% block content %}{% endblock %}
+			<div class="container marketing {% if block('carousel') is not defined %} mt-5 {% endif %}">
 
-				</div>
-				<!-- /.container -->
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
 
-				<!-- FOOTER -->
-				<footer class="container">
-					<p class="float-right">
-						<a href="#">Back to top</a>
-					</p>
-					<p>&copy; 2017-2020 Company, Inc. &middot;
-						<a href="#">Privacy</a>
-						&middot;
-						<a href="#">Terms</a>
-					</p>
-				</footer>
-			</main>
-			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-			<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
-		</body>
-	</html>
+				{% block content %}{% endblock %}
+
+			</div>
+			<!-- /.container -->
+
+			<!-- FOOTER -->
+			<footer class="footer-custom">
+				<p>&copy; 2021 Klevor <br/>
+					<a href="#">Privacy</a>
+					&middot;
+					<a href="#">Terms</a>
+				</p>
+			</footer>
+		</main>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+		<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+	</body>
+</html>
