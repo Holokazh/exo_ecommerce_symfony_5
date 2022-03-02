@@ -40,6 +40,9 @@
 		</style>
 		<!-- Custom styles for this template -->
 		<link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
+
+		<!-- FontAwesome -->
+		<script src="https://kit.fontawesome.com/81977f7aea.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<header>
@@ -72,6 +75,7 @@
 							|
 							<a href="{{ path('app_login') }}">Connexion</a>
 						{% endif %}
+						<a href="{{ path('cart') }}"><img src="{{ asset('assets/img/shopping-cart.svg') }}" class="cart-icon ml-3" alt="Mon panier"></a>
 					</div>
 				</div>
 			</nav>
