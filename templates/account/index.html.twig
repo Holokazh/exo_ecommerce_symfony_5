@@ -5,12 +5,18 @@
 
 {% block content %}
 	<h1>Mon compte</h1>
-	<h4>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}.</h4>
+	<h4>Bonjour
+		{{ app.user.firstname }}
+		{{ app.user.lastname }}.</h4>
 	<p>C'est ici que vous pouvez consulter et modifier les informations de votre compte.</p>
 	<hr>
 	<ul>
-		<li><a href="{{ path('account_changePassword') }}">Modifier son mot de passe</a></li>
-		<li>Ajouter mes adresses</li>
+		<li>
+			<a href="{{ path('account_changePassword') }}">Modifier mon mot de passe</a>
+		</li>
+		<li>
+			<a href="{{ path('account_address') }}">Gérer mes adresses</a>
+		</li>
 		<li>Mes commandes</li>
 	</ul>
 	<hr>
