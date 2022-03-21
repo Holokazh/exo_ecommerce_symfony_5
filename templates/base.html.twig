@@ -39,7 +39,8 @@
 			}
 		</style>
 		<!-- Custom styles for this template -->
-		<link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
+		<link
+		href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
 
 		<!-- FontAwesome -->
 		<script src="https://kit.fontawesome.com/81977f7aea.js" crossorigin="anonymous"></script>
@@ -65,6 +66,7 @@
 					</ul>
 					<div class="navbar-item-custom">
 						{% if app.user %}
+							<a href="{{ path('admin') }}" class="mr-5">Panel Admin</a>
 							<a href="{{ path('account') }}">Mon compte
 								<small>({{ app.user.firstname }})</small>
 							</a>
@@ -100,7 +102,7 @@
 								<div class="carousel-caption text-left">
 									<h1>Example headline.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																																																																																																																																                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																																																								                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
 									</p>
@@ -115,7 +117,7 @@
 								<div class="carousel-caption">
 									<h1>Another example headline.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																																																																																																																																                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																																																								                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
 									</p>
@@ -130,7 +132,7 @@
 								<div class="carousel-caption text-right">
 									<h1>One more for good measure.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																																																																																																																																                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																																																								                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a>
 									</p>
@@ -153,7 +155,7 @@
 
 
 			<!-- Marketing messaging and featurettes
-																																							        ================================================== -->
+																																																			        ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
 			<div class="container marketing {% if block('carousel') is not defined %} mt-5 {% endif %}">
@@ -173,7 +175,8 @@
 
 			<!-- FOOTER -->
 			<footer class="footer-custom">
-				<p>&copy; 2021 Klevor <br/>
+				<p>&copy; 2021 Klevor
+					<br/>
 					<a href="#">Privacy</a>
 					&middot;
 					<a href="#">Terms</a>
