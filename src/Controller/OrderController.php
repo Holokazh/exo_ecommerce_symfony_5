@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use DateTime;
+use Stripe\Stripe;
 use App\Classe\Cart;
 use App\Entity\Order;
 use DateTimeImmutable;
@@ -63,6 +64,8 @@ class OrderController extends AbstractController
             $deliveryContent .= $delivery->getCountry();
 
             $order = new Order();
+            $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
             $order->setCarrierName($carriers->getName());
@@ -71,7 +74,6 @@ class OrderController extends AbstractController
             $order->setIsPaid(0);
 
             $this->entityManager->persist($order);
-
 
             foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails();
@@ -88,7 +90,8 @@ class OrderController extends AbstractController
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
                 'delivery' => $deliveryContent,
-                'carrier' => $carriers
+                'carrier' => $carriers,
+                'reference' => $order->getReference()
             ]);
         }
 

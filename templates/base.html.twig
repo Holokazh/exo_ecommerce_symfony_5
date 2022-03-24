@@ -20,7 +20,9 @@
 		<!-- Bootstrap core CSS -->
 		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
-		<link href="{{ asset('assets/css/klevor.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/klevor.css') }}" rel="stylesheet"> 
+		
+		{% block javascript %}{% endblock %}
 
 		<style>
 			.bd-placeholder-img {
@@ -102,7 +104,7 @@
 								<div class="carousel-caption text-left">
 									<h1>Example headline.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																																																																																																																																																																								                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																																																																		                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a>
 									</p>
@@ -117,7 +119,7 @@
 								<div class="carousel-caption">
 									<h1>Another example headline.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																																																																																																																																																																								                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																																																																		                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a>
 									</p>
@@ -132,7 +134,7 @@
 								<div class="carousel-caption text-right">
 									<h1>One more for good measure.</h1>
 									<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-																																																																																																																																																																								                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+																																																																																																																																																																																		                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 									<p>
 										<a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a>
 									</p>
@@ -155,7 +157,7 @@
 
 
 			<!-- Marketing messaging and featurettes
-																																																			        ================================================== -->
+																																																						        ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
 			<div class="container marketing {% if block('carousel') is not defined %} mt-5 {% endif %}">
@@ -186,4 +188,5 @@
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 		<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
 	</body>
+	{% block script %}{% endblock %}
 </html>
