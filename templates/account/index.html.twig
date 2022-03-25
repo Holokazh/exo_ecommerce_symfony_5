@@ -13,18 +13,38 @@
 	<ul>
 		{% if is_granted('ROLE_ADMIN') %}
 			<li>
-				Vous êtes un administrateur. Accéder au <a href="{{ path('admin') }}">panel d'administration</a>.
+				Vous êtes un administrateur. Accéder au
+				<a href="{{ path('admin') }}">panel d'administration</a>.
 			</li>
 		{% endif %}
-		<li>
-			<a href="{{ path('account_changePassword') }}">Modifier mon mot de passe</a>
-		</li>
-		<li>
-			<a href="{{ path('account_address') }}">Gérer mes adresses</a>
-		</li>
-		<li>
-			<a href="{{ path('account_order') }}">Mes commandes</a>
-		</li>
 	</ul>
+
+	<div class="row">
+		<div class="col-md-4">
+			<div class="account-item text-center">
+				<a href="{{ path('account_changePassword') }}">
+					<img src="{{ asset('assets/img/password.png') }}" class="account-img" alt="Modifier mon mot de passe"><br/>
+					Modifier mon mot de passe
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="account-item text-center">
+				<a href="{{ path('account_address') }}">
+					<img src="{{ asset('assets/img/address.png') }}" class="account-img" alt="Gérer mes adresses"><br/>
+					Gérer mes adresses
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="account-item text-center">
+				<a href="{{ path('account_order') }}">
+					<img src="{{ asset('assets/img/order.png') }}" class="account-img" alt="Mes commandes"><br/>
+					Mes commandes
+				</a>
+			</div>
+		</div>
+	</div>
+
 	<hr>
 {% endblock %}
