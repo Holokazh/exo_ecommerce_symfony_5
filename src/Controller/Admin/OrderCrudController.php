@@ -29,7 +29,8 @@ class OrderCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        return $crud->setDefaultSort(['id' => 'DESC']);
+        return $crud->setDefaultSort(['id' => 'DESC'])
+            ->setPageTitle('index', 'Commande(s)');
     }
 
     public function configureFields(string $pageName): iterable
@@ -41,7 +42,7 @@ class OrderCrudController extends AbstractCrudController
             TextField::new('carrierName', 'Transporteur'),
             MoneyField::new('total')->setCurrency('EUR'),
             MoneyField::new('carrierPrice', 'Frais de port')->setCurrency('EUR'),
-            BooleanField::new('isPaid', 'Payée'),
+            BooleanField::new('isPaid', 'Payée')->renderAsSwitch(false)->hideOnForm(),
             ArrayField::new('orderDetails', 'Produits achetés')->hideOnIndex()
         ];
     }

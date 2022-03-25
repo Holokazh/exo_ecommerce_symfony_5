@@ -11,6 +11,11 @@
 	<p>C'est ici que vous pouvez consulter et modifier les informations de votre compte.</p>
 	<hr>
 	<ul>
+		{% if is_granted('ROLE_ADMIN') %}
+			<li>
+				Vous êtes un administrateur. Accéder au <a href="{{ path('admin') }}">panel d'administration</a>.
+			</li>
+		{% endif %}
 		<li>
 			<a href="{{ path('account_changePassword') }}">Modifier mon mot de passe</a>
 		</li>

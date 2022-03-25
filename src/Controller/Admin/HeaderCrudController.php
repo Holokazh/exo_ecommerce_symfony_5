@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Header;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -13,6 +14,12 @@ class HeaderCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Header::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setPageTitle('index', 'En-tête(s)')
+            ->setHelp('index', 'Cette partie sert à modifier l\'en-tête sur l\'accueil de votre site.');
     }
 
     public function configureFields(string $pageName): iterable

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Carrier;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -13,6 +14,11 @@ class CarrierCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Carrier::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setPageTitle('index', 'Transporteur(s)');
     }
 
     

@@ -10,6 +10,10 @@
 				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 			{% endif %}
 
+			{% for message in app.flashes('notice') %}
+				<div class="alert alert-info">{{ message }}</div>
+			{% endfor %}
+
 			{% if app.user %}
 				<div class="mb-3">
 					Vous êtes connecté en tant que
@@ -29,8 +33,13 @@
 			<button class="btn btn-info btn-block mt-2" type="submit">
 				Se connecter
 			</button>
-            <hr>
-            <p class="text-center">Vous n'avez pas de compte ? <a href="{{ path('register') }}">Créez votre compte</a></p>
+			<hr>
+			<p class="text-center">Vous avez oublié votre mot de passe ?
+				<a href="{{ path('reset_password') }}">Mot de passe oublié</a>
+			</p>
+			<p class="text-center">Vous n'avez pas de compte ?
+				<a href="{{ path('register') }}">Créez votre compte</a>
+			</p>
 		</form>
 	</div>
 {% endblock %}
